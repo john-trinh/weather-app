@@ -17,18 +17,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "18"
-          cache: "npm"
+          cache: "yarn"
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
 
       - name: Check for outdated packages
-        run: npm outdated
+        run: yarn outdated
 
       - name: Update dependencies
         run: |
-          npm update
-          npm audit fix
+          yarn update
+          yarn audit fix
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
