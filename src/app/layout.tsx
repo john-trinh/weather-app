@@ -21,10 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${notoSans.variable} antialiased font-sans relative`}>
+      <body
+        className={`${notoSans.variable} antialiased font-sans relative min-h-screen`}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="fixed top-0 left-0 w-screen h-screen z-[-1] transition-[background-image] duration-300 bg-light dark:bg-dark" />
-          <div className="absolute right-10 top-10">
+          <div className="absolute bottom-4 right-4">
             <ModeToggle />
           </div>
           {children}
