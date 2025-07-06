@@ -24,10 +24,10 @@ jobs:
         run: yarn install
 
       - name: Build application
-        run: yarn build
+        run: ANALYZE=true yarn build
 
       - name: Analyze bundle size
-        run: npx @next/bundle-analyzer .next/static/chunks
+        run: yarn next build --analyze
 
       - name: Upload bundle analysis
         uses: actions/upload-artifact@v4
