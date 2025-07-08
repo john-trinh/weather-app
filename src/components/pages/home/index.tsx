@@ -4,8 +4,9 @@ import useWeatherStore from "@/stores/weatherStore";
 import SearchBar from "./SearchBar";
 import SearchHistory from "./SearchHistory";
 import { useEffect } from "react";
-import { getWeatherByCoordinates } from "@/lib/utils";
 import WeatherView from "./WeatherView";
+import { getCurrentLocationWeather } from "@/lib/weatherService";
+import { Weather } from "@/types";
 
 const Home = () => {
   const { weather, setWeather, loadHistoryFromStorage } = useWeatherStore();
@@ -15,15 +16,9 @@ const Home = () => {
     loadHistoryFromStorage();
 
     // get weather from user's current location
-    const getWeatherFromLocation = async () => {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        const weather = await getWeatherByCoordinates(latitude, longitude);
-        setWeather(weather);
-      });
-    };
-
-    getWeatherFromLocation();
+    getCurrentLocationWeather()
+      .then((weather: Weather) => setWeather(weather))
+      .catch(console.error);
   }, [loadHistoryFromStorage, setWeather]);
 
   return (
