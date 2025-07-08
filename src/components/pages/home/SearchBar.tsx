@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { getWeatherByLocation } from "@/lib/utils";
+import { getWeatherByLocation } from "@/lib/weatherApi";
 
 import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";

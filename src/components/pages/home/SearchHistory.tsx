@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Trash } from "lucide-react";
 import useWeatherStore from "@/stores/weatherStore";
 import type { SearchHistory } from "@/stores/weatherStore";
-import { getWeatherByCoordinates } from "@/lib/utils";
+import { getWeatherByCoordinates } from "@/lib/weatherApi";
 
 const SearchHistory = () => {
   const { searchHistory, removeFromHistory, setWeather } = useWeatherStore();
